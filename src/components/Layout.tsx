@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useNavigate, Outlet } from 'react-router-dom';
+import { Link as RouterLink, useNavigate, Outlet } from 'react-router-dom';
 import {
   AppBar,
   Toolbar,
@@ -64,14 +64,14 @@ const Layout: React.FC<LayoutProps> = ({ isAdmin }) => {
       <List>
         {localStorage.getItem('token') && (
           <>
-            <ListItem button component={Link} to="/">
+            <ListItem button component={RouterLink} to="/">
               <ListItemIcon>
                 <DashboardIcon />
               </ListItemIcon>
               <ListItemText primary="Dashboard" />
             </ListItem>
 
-            <ListItem button component={Link} to="/assessment">
+            <ListItem button component={RouterLink} to="/assessment">
               <ListItemIcon>
                 <AssessmentIcon />
               </ListItemIcon>
@@ -79,7 +79,7 @@ const Layout: React.FC<LayoutProps> = ({ isAdmin }) => {
             </ListItem>
 
             {isAdmin && (
-              <ListItem button component={Link} to="/admin">
+              <ListItem button component={RouterLink} to="/admin">
                 <ListItemIcon>
                   <AdminPanelSettingsIcon />
                 </ListItemIcon>
@@ -94,7 +94,10 @@ const Layout: React.FC<LayoutProps> = ({ isAdmin }) => {
 
   return (
     <Box sx={{ display: 'flex' }}>
-      <AppBar position="fixed" sx={{ width: { sm: `calc(100% - ${drawerWidth}px)` }, ml: { sm: `${drawerWidth}px` } }}>
+      <AppBar
+        position="fixed"
+        sx={{ width: { sm: `calc(100% - ${drawerWidth}px)` }, ml: { sm: `${drawerWidth}px` } }}
+      >
         <Toolbar>
           <IconButton
             color="inherit"
@@ -106,9 +109,9 @@ const Layout: React.FC<LayoutProps> = ({ isAdmin }) => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            <Link to="/" style={{ color: 'white', textDecoration: 'none' }}>
+            <RouterLink to="/" style={{ color: 'white', textDecoration: 'none' }}>
               Lifepath360
-            </Link>
+            </RouterLink>
           </Typography>
 
           {localStorage.getItem('token') ? (
@@ -138,27 +141,31 @@ const Layout: React.FC<LayoutProps> = ({ isAdmin }) => {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
-                <MenuItem component={Link} to="/profile" onClick={handleClose}>
+                <MenuItem component={RouterLink} to="/profile" onClick={handleClose}>
                   Profile
                 </MenuItem>
                 <MenuItem onClick={handleLogout}>Logout</MenuItem>
               </Menu>
             </div>
           ) : (
-            <Button color="inherit" component={Link} to="/login">
+            <Button color="inherit" component={RouterLink} to="/login">
               Login
             </Button>
           )}
         </Toolbar>
       </AppBar>
 
-      <Box component="nav" sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }} aria-label="sidebar">
+      <Box
+        component="nav"
+        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
+        aria-label="mailbox folders"
+      >
         <Drawer
           variant="temporary"
           open={mobileOpen}
           onClose={handleDrawerToggle}
           ModalProps={{
-            keepMounted: true, // Better open performance on mobile
+            keepMounted: true,
           }}
           sx={{
             display: { xs: 'block', sm: 'none' },
