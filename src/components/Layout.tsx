@@ -1,6 +1,22 @@
 import React from 'react';
-import { Link as RouterLink, useNavigate, Outlet } from 'react-router-dom';
-import { AppBar, Toolbar, Typography, Button, Container, Box, IconButton, Menu, MenuItem, Drawer, List, ListItem, ListItemText, ListItemIcon, Divider } from '@mui/material';
+import { Link, useNavigate, Outlet } from 'react-router-dom';
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Button,
+  Container,
+  Box,
+  IconButton,
+  Menu,
+  MenuItem,
+  Drawer,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Divider,
+} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import AssessmentIcon from '@mui/icons-material/Assessment';
@@ -12,19 +28,17 @@ type LayoutProps = {
   isAdmin: boolean;
 };
 
+const drawerWidth = 240;
+
 const Layout: React.FC<LayoutProps> = ({ isAdmin }) => {
-  const navigate = useNavigate();
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  
-  const isAuthenticated = localStorage.getItem('token') !== null;
-  const userRole = localStorage.getItem('userRole');
-  const isUserAdmin = isAdmin || userRole === 'admin';
-  
+  const navigate = useNavigate();
+
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
-  
+
   const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
@@ -32,13 +46,13 @@ const Layout: React.FC<LayoutProps> = ({ isAdmin }) => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  
+
   const handleLogout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('userRole');
     navigate('/login');
   };
-  
+
   const drawer = (
     <div>
       <Box sx={{ p: 2 }}>
@@ -48,50 +62,30 @@ const Layout: React.FC<LayoutProps> = ({ isAdmin }) => {
       </Box>
       <Divider />
       <List>
-        {isAuthenticated && (
+        {localStorage.getItem('token') && (
           <>
-            <ListItem button component={RouterLink} to="/">
+            <ListItem button component={Link} to="/">
               <ListItemIcon>
                 <DashboardIcon />
               </ListItemIcon>
               <ListItemText primary="Dashboard" />
             </ListItem>
-            <ListItem button component={RouterLink} to="/assessment">
+
+            <ListItem button component={Link} to="/assessment">
               <ListItemIcon>
                 <AssessmentIcon />
               </ListItemIcon>
               <ListItemText primary="Take Assessment" />
             </ListItem>
-            <ListItem button component={RouterLink} to="/profile">
-              <ListItemIcon>
-                <PersonIcon />
-              </ListItemIcon>
-              <ListItemText primary="Profile" />
-            </ListItem>
-            {isUserAdmin && (
-              <ListItem button component={RouterLink} to="/admin">
+
+            {isAdmin && (
+              <ListItem button component={Link} to="/admin">
                 <ListItemIcon>
                   <AdminPanelSettingsIcon />
                 </ListItemIcon>
-                <ListItemText primary="Admin" />
+                <ListItemText primary="Admin Panel" />
               </ListItem>
             )}
-            <ListItem button onClick={handleLogout}>
-              <ListItemIcon>
-                <ExitToAppIcon />
-              </ListItemIcon>
-              <ListItemText primary="Logout" />
-            </ListItem>
-          </>
-        )}
-        {!isAuthenticated && (
-          <>
-            <ListItem button component={RouterLink} to="/login">
-              <ListItemText primary="Login" />
-            </ListItem>
-            <ListItem button component={RouterLink} to="/register">
-              <ListItemText primary="Register" />
-            </ListItem>
           </>
         )}
       </List>
@@ -99,8 +93,8 @@ const Layout: React.FC<LayoutProps> = ({ isAdmin }) => {
   );
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-      <AppBar position="static">
+    <Box sx={{ display: 'flex' }}>
+      <AppBar position="fixed" sx={{ width: { sm: `calc(100% - ${drawerWidth}px)` }, ml: { sm: `${drawerWidth}px` } }}>
         <Toolbar>
           <IconButton
             color="inherit"
@@ -112,85 +106,82 @@ const Layout: React.FC<LayoutProps> = ({ isAdmin }) => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            <RouterLinkto="/" style={{ color: 'white', textDecoration: 'none' }}>
+            <Link to="/" style={{ color: 'white', textDecoration: 'none' }}>
               Lifepath360
-            </RouterLink>
+            </Link>
           </Typography>
-          <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-            {isAuthenticated ? (
-              <>
-                <Button color="inherit" component={RouterLink} to="/">
-                  Dashboard
-                </Button>
-                <Button color="inherit" component={RouterLink} to="/assessment">
-                  Take Assessment
-                </Button>
-                {isUserAdmin && (
-                  <Button color="inherit" component={RouterLink} to="/admin">
-                    Admin
-                  </Button>
-                )}
-                <Button color="inherit" onClick={handleMenu}>
-                  Account
-                </Button>
-                <Menu
-                  id="menu-appbar"
-                  anchorEl={anchorEl}
-                  anchorOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  keepMounted
-                  transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  open={Boolean(anchorEl)}
-                  onClose={handleClose}
-                >
-                  <MenuItem component={RouterLink} to="/profile" onClick={handleClose}>Profile</MenuItem>
-                  <MenuItem onClick={handleLogout}>Logout</MenuItem>
-                </Menu>
-              </>
-            ) : (
-              <>
-                <Button color="inherit" component={RouterLink} to="/login">
-                  Login
-                </Button>
-                <Button color="inherit" component={RouterLink} to="/register">
-                  Register
-                </Button>
-              </>
-            )}
-          </Box>
+
+          {localStorage.getItem('token') ? (
+            <div>
+              <IconButton
+                size="large"
+                aria-label="account options"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleMenu}
+                color="inherit"
+              >
+                <PersonIcon />
+              </IconButton>
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorEl}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                open={Boolean(anchorEl)}
+                onClose={handleClose}
+              >
+                <MenuItem component={Link} to="/profile" onClick={handleClose}>
+                  Profile
+                </MenuItem>
+                <MenuItem onClick={handleLogout}>Logout</MenuItem>
+              </Menu>
+            </div>
+          ) : (
+            <Button color="inherit" component={Link} to="/login">
+              Login
+            </Button>
+          )}
         </Toolbar>
       </AppBar>
 
-      <Drawer
-        variant="temporary"
-        open={mobileOpen}
-        onClose={handleDrawerToggle}
-        ModalProps={{
-          keepMounted: true,
-        }}
-        sx={{
-          display: { xs: 'block', sm: 'none' },
-          '& .MuiDrawer-paper': { boxSizing: 'border-box', width: 240 },
-        }}
-      >
-        {drawer}
-      </Drawer>
+      <Box component="nav" sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }} aria-label="sidebar">
+        <Drawer
+          variant="temporary"
+          open={mobileOpen}
+          onClose={handleDrawerToggle}
+          ModalProps={{
+            keepMounted: true, // Better open performance on mobile
+          }}
+          sx={{
+            display: { xs: 'block', sm: 'none' },
+            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+          }}
+        >
+          {drawer}
+        </Drawer>
 
-      <Container component="main" sx={{ flexGrow: 1, py: 3 }}>
+        <Drawer
+          variant="permanent"
+          sx={{
+            display: { xs: 'none', sm: 'block' },
+            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+          }}
+          open
+        >
+          {drawer}
+        </Drawer>
+      </Box>
+
+      <Box component="main" sx={{ flexGrow: 1, p: 3, mt: 8 }}>
         <Outlet />
-      </Container>
-
-      <Box component="footer" sx={{ py: 3, px: 2, mt: 'auto', backgroundColor: (theme) => theme.palette.grey[200] }}>
-        <Container maxWidth="sm">
-          <Typography variant="body2" color="text.secondary" align="center">
-            © {new Date().getFullYear()} Lifepath360 - Shining Star Education Training LLC
-          </Typography>
-        </Container>
       </Box>
     </Box>
   );
