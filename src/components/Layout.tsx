@@ -112,21 +112,21 @@ const Layout: React.FC<LayoutProps> = ({ isAdmin }) => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            <Link to="/" style={{ color: 'white', textDecoration: 'none' }}>
+            <RouterLinkto="/" style={{ color: 'white', textDecoration: 'none' }}>
               Lifepath360
-            </Link>
+            </RouterLink>
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {isAuthenticated ? (
               <>
-                <Button color="inherit" component={Link} to="/">
+                <Button color="inherit" component={RouterLink} to="/">
                   Dashboard
                 </Button>
-                <Button color="inherit" component={Link} to="/assessment">
+                <Button color="inherit" component={RouterLink} to="/assessment">
                   Take Assessment
                 </Button>
                 {isUserAdmin && (
-                  <Button color="inherit" component={Link} to="/admin">
+                  <Button color="inherit" component={RouterLink} to="/admin">
                     Admin
                   </Button>
                 )}
@@ -148,16 +148,16 @@ const Layout: React.FC<LayoutProps> = ({ isAdmin }) => {
                   open={Boolean(anchorEl)}
                   onClose={handleClose}
                 >
-                  <MenuItem component={Link} to="/profile" onClick={handleClose}>Profile</MenuItem>
+                  <MenuItem component={RouterLink} to="/profile" onClick={handleClose}>Profile</MenuItem>
                   <MenuItem onClick={handleLogout}>Logout</MenuItem>
                 </Menu>
               </>
             ) : (
               <>
-                <Button color="inherit" component={Link} to="/login">
+                <Button color="inherit" component={RouterLink} to="/login">
                   Login
                 </Button>
-                <Button color="inherit" component={Link} to="/register">
+                <Button color="inherit" component={RouterLink} to="/register">
                   Register
                 </Button>
               </>
