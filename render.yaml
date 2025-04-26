@@ -1,0 +1,55 @@
+# Render deployment configuration for Learning Compass
+
+# Backend configuration
+services:
+  - type: web
+    name: learning-compass-api
+    env: python
+    buildCommand: cd backend && pip install -r requirements.txt && python manage.py collectstatic --noinput
+    startCommand: cd backend && gunicorn learning_compass.wsgi:application
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.12
+      - key: DATABASE_URL
+        fromDatabase:
+          name: learning-compass-db
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DJANGO_SETTINGS_MODULE
+        value: learning_compass.settings
+      - key: ALLOWED_HOSTS
+        value: .render.com
+      - key: DEBUG
+        value: false
+      - key: ENCRYPTION_KEY
+        generateValue: true
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: STRIPE_SECRET_KEY
+        sync: false
+      - key: STRIPE_PUBLISHABLE_KEY
+        sync: false
+      - key: STRIPE_WEBHOOK_SECRET
+        sync: false
+
+# Frontend configuration
+  - type: web
+    name: learning-compass-ui
+    env: node
+    buildCommand: cd frontend/learning-compass-ui && npm install && npm run build
+    startCommand: cd frontend/learning-compass-ui && npm start
+    envVars:
+      - key: NODE_VERSION
+        value: 20.18.0
+      - key: REACT_APP_API_URL
+        value: https://learning-compass-api.render.com
+      - key: REACT_APP_STRIPE_PUBLISHABLE_KEY
+        sync: false
+
+# Database configuration
+databases:
+  - name: learning-compass-db
+    databaseName: learning_compass
+    user: learning_compass_user
+    plan: free
