@@ -113,7 +113,7 @@ const Layout: React.FC<LayoutProps> = ({ isAdmin }) => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            <RouterLinkto="/" style={{ color: 'white', textDecoration: 'none' }}>
+            <RouterLink to="/" style={{ color: 'white', textDecoration: 'none' }}>
               Lifepath360
             </RouterLink>
           </Typography>
