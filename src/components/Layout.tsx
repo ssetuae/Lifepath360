@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useNavigate, Outlet } from 'react-router-dom';
+import { Link as RouterLink, useNavigate, Outlet } from 'react-router-dom';
 import { AppBar, Toolbar, Typography, Button, Container, Box, IconButton, Menu, MenuItem, Drawer, List, ListItem, ListItemText, ListItemIcon, Divider } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import DashboardIcon from '@mui/icons-material/Dashboard';
@@ -50,26 +50,26 @@ const Layout: React.FC<LayoutProps> = ({ isAdmin }) => {
       <List>
         {isAuthenticated && (
           <>
-            <ListItem button component={Link} to="/">
+            <ListItem button component={RouterLink} to="/">
               <ListItemIcon>
                 <DashboardIcon />
               </ListItemIcon>
               <ListItemText primary="Dashboard" />
             </ListItem>
-            <ListItem button component={Link} to="/assessment">
+            <ListItem button component={RouterLink} to="/assessment">
               <ListItemIcon>
                 <AssessmentIcon />
               </ListItemIcon>
               <ListItemText primary="Take Assessment" />
             </ListItem>
-            <ListItem button component={Link} to="/profile">
+            <ListItem button component={RouterLink} to="/profile">
               <ListItemIcon>
                 <PersonIcon />
               </ListItemIcon>
               <ListItemText primary="Profile" />
             </ListItem>
             {isUserAdmin && (
-              <ListItem button component={Link} to="/admin">
+              <ListItem button component={RouterLink} to="/admin">
                 <ListItemIcon>
                   <AdminPanelSettingsIcon />
                 </ListItemIcon>
@@ -86,10 +86,10 @@ const Layout: React.FC<LayoutProps> = ({ isAdmin }) => {
         )}
         {!isAuthenticated && (
           <>
-            <ListItem button component={Link} to="/login">
+            <ListItem button component={RouterLink} to="/login">
               <ListItemText primary="Login" />
             </ListItem>
-            <ListItem button component={Link} to="/register">
+            <ListItem button component={RouterLink} to="/register">
               <ListItemText primary="Register" />
             </ListItem>
           </>
