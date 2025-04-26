@@ -1,9 +1,8 @@
-import React from 'react';
+import * as React from 'react';
 import { Link as RouterLink, LinkProps as RouterLinkProps } from 'react-router-dom';
 
-// Properly forward ref
-const ListItemLink = React.forwardRef<HTMLAnchorElement, RouterLinkProps>((props, ref) => (
-  <RouterLink ref={ref} {...props} />
-));
+const ListItemLink = React.forwardRef<HTMLAnchorElement, RouterLinkProps>(function ListItemLink(props, ref) {
+  return <RouterLink ref={ref} {...props} role={undefined} />;
+});
 
 export default ListItemLink;

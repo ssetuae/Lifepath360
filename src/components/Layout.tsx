@@ -17,29 +17,26 @@ const Layout: React.FC<LayoutProps> = ({ isAdmin }) => {
   const navigate = useNavigate();
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  
-  const isAuthenticated = localStorage.getItem('token') !== null;
-  const userRole = localStorage.getItem('userRole');
-  const isUserAdmin = isAdmin || userRole === 'admin';
-  
+  const isAuthenticated = Boolean(localStorage.getItem('token'));
+
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
-  
-  const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
+
+  const handleMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleClose = () => {
+  const handleMenuClose = () => {
     setAnchorEl(null);
   };
-  
+
   const handleLogout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('userRole');
     navigate('/login');
   };
-  
+
   const drawer = (
     <div>
       <Box sx={{ p: 2 }}>
@@ -63,36 +60,14 @@ const Layout: React.FC<LayoutProps> = ({ isAdmin }) => {
               </ListItemIcon>
               <ListItemText primary="Take Assessment" />
             </ListItem>
-            <ListItem button component={ListItemLink} to="/profile">
-              <ListItemIcon>
-                <PersonIcon />
-              </ListItemIcon>
-              <ListItemText primary="Profile" />
-            </ListItem>
-            {isUserAdmin && (
+            {isAdmin && (
               <ListItem button component={ListItemLink} to="/admin">
                 <ListItemIcon>
                   <AdminPanelSettingsIcon />
                 </ListItemIcon>
-                <ListItemText primary="Admin" />
+                <ListItemText primary="Admin Panel" />
               </ListItem>
             )}
-            <ListItem button onClick={handleLogout}>
-              <ListItemIcon>
-                <ExitToAppIcon />
-              </ListItemIcon>
-              <ListItemText primary="Logout" />
-            </ListItem>
-          </>
-        )}
-        {!isAuthenticated && (
-          <>
-            <ListItem button component={ListItemLink} to="/login">
-              <ListItemText primary="Login" />
-            </ListItem>
-            <ListItem button component={ListItemLink} to="/register">
-              <ListItemText primary="Register" />
-            </ListItem>
           </>
         )}
       </List>
@@ -100,98 +75,39 @@ const Layout: React.FC<LayoutProps> = ({ isAdmin }) => {
   );
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-      <AppBar position="static">
+    <Box sx={{ display: 'flex' }}>
+      <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
         <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: 'none' } }}
-          >
+          <IconButton color="inherit" aria-label="open drawer" edge="start" onClick={handleDrawerToggle} sx={{ mr: 2 }}>
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
             <RouterLink to="/" style={{ color: 'white', textDecoration: 'none' }}>
               Lifepath360
             </RouterLink>
           </Typography>
-          <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-            {isAuthenticated ? (
-              <>
-                <Button color="inherit" component={RouterLink} to="/">
-                  Dashboard
-                </Button>
-                <Button color="inherit" component={RouterLink} to="/assessment">
-                  Take Assessment
-                </Button>
-                {isUserAdmin && (
-                  <Button color="inherit" component={RouterLink} to="/admin">
-                    Admin
-                  </Button>
-                )}
-                <Button color="inherit" onClick={handleMenu}>
-                  Account
-                </Button>
-                <Menu
-                  id="menu-appbar"
-                  anchorEl={anchorEl}
-                  anchorOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  keepMounted
-                  transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  open={Boolean(anchorEl)}
-                  onClose={handleClose}
-                >
-                  <MenuItem component={RouterLink} to="/profile" onClick={handleClose}>Profile</MenuItem>
-                  <MenuItem onClick={handleLogout}>Logout</MenuItem>
-                </Menu>
-              </>
-            ) : (
-              <>
-                <Button color="inherit" component={RouterLink} to="/login">
-                  Login
-                </Button>
-                <Button color="inherit" component={RouterLink} to="/register">
-                  Register
-                </Button>
-              </>
-            )}
-          </Box>
+          {isAuthenticated ? (
+            <>
+              <Button color="inherit" onClick={handleMenuOpen}>
+                Account
+              </Button>
+              <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose}>
+                <MenuItem component={RouterLink} to="/profile">Profile</MenuItem>
+                <MenuItem onClick={handleLogout}>Logout</MenuItem>
+              </Menu>
+            </>
+          ) : (
+            <Button color="inherit" component={RouterLink} to="/login">
+              Login
+            </Button>
+          )}
         </Toolbar>
       </AppBar>
-
-      <Drawer
-        variant="temporary"
-        open={mobileOpen}
-        onClose={handleDrawerToggle}
-        ModalProps={{
-          keepMounted: true,
-        }}
-        sx={{
-          display: { xs: 'block', sm: 'none' },
-          '& .MuiDrawer-paper': { boxSizing: 'border-box', width: 240 },
-        }}
-      >
+      <Drawer variant="permanent" sx={{ width: 240, flexShrink: 0, [`& .MuiDrawer-paper`]: { width: 240, boxSizing: 'border-box' } }}>
         {drawer}
       </Drawer>
-
-      <Container component="main" sx={{ flexGrow: 1, py: 3 }}>
+      <Box component="main" sx={{ flexGrow: 1, p: 3, mt: 8 }}>
         <Outlet />
-      </Container>
-
-      <Box component="footer" sx={{ py: 3, px: 2, mt: 'auto', backgroundColor: (theme) => theme.palette.grey[200] }}>
-        <Container maxWidth="sm">
-          <Typography variant="body2" color="text.secondary" align="center">
-            © {new Date().getFullYear()} Lifepath360 - Shining Star Education Training LLC
-          </Typography>
-        </Container>
       </Box>
     </Box>
   );
