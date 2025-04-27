@@ -414,7 +414,7 @@ const AdminReportView: React.FC = () => {
                       {Object.entries(results.learning_styles.scores).map(([key, value]) => (
                         <TableRow key={key}>
                           <TableCell>{key.charAt(0).toUpperCase() + key.slice(1)}</TableCell>
-                          <TableCell>{value}/10</TableCell>
+                          <TableCell>{value/10}</TableCell>
                         </TableRow>
                       ))}
                     </TableBody>
@@ -443,7 +443,7 @@ const AdminReportView: React.FC = () => {
                       {Object.entries(results.cognitive_strengths.scores).map(([key, value]) => (
                         <TableRow key={key}>
                           <TableCell>{key.charAt(0).toUpperCase() + key.slice(1)}</TableCell>
-                          <TableCell>{value}/10</TableCell>
+                          <TableCell>{value/10}</TableCell>
                         </TableRow>
                       ))}
                     </TableBody>
