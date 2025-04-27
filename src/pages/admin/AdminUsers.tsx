@@ -117,7 +117,7 @@ const AdminUsers: React.FC = () => {
     if (name) {
       setFormData({
         ...formData,
-        [name]: value
+        [name]: name === 'is_active' ? value === 'true' : value
       });
     }
   };
@@ -422,7 +422,7 @@ const AdminUsers: React.FC = () => {
                 <InputLabel>Status</InputLabel>
                 <Select
                   name="is_active"
-                  value={formData.is_active}
+                  value={String(formData.is_active)}
                   label="Status"
                   onChange={handleInputChange}
                 >
