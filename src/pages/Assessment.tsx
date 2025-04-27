@@ -274,7 +274,7 @@ const Assessment: React.FC = () => {
         </Card>
         
         <Grid container spacing={2} justifyContent="space-between">
-          <Grid item>
+          <Grid >
             <Button
               variant="outlined"
               disabled={currentQuestionIndex === 0 || submitting}
@@ -283,7 +283,7 @@ const Assessment: React.FC = () => {
               Previous
             </Button>
           </Grid>
-          <Grid item>
+          <Grid >
             <Button
               variant="contained"
               onClick={handleSubmitResponse}

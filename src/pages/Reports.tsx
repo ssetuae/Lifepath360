@@ -135,7 +135,7 @@ const Reports = () => {
         
         <Grid container spacing={3}>
           {/* Summary Report Card */}
-          <Grid item xs={12} md={6}>
+          <Grid  xs={12} md={6}>
             <Card>
               <CardContent>
                 <Typography variant="h6" gutterBottom>
@@ -161,7 +161,7 @@ const Reports = () => {
           </Grid>
           
           {/* Detailed Report Card */}
-          <Grid item xs={12} md={6}>
+          <Grid  xs={12} md={6}>
             <Card>
               <CardContent>
                 <Typography variant="h6" gutterBottom>

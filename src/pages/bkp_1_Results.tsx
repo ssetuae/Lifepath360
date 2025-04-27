@@ -293,7 +293,7 @@ const Results: React.FC = () => {
         
         <TabPanel value={tabValue} index={0}>
           <Grid container spacing={3}>
-            <Grid item xs={12} md={6}>
+            <Grid  xs={12} md={6}>
               <Card variant="outlined" sx={{ height: '100%' }}>
                 <CardContent>
                   <Typography variant="h6" gutterBottom>
@@ -349,7 +349,7 @@ const Results: React.FC = () => {
               </Card>
             </Grid>
             
-            <Grid item xs={12} md={6}>
+            <Grid  xs={12} md={6}>
               <Card variant="outlined" sx={{ height: '100%' }}>
                 <CardContent>
                   <Typography variant="h6" gutterBottom>
@@ -397,7 +397,7 @@ const Results: React.FC = () => {
         
         <TabPanel value={tabValue} index={1}>
           <Grid container spacing={3}>
-            <Grid item xs={12} md={6}>
+            <Grid  xs={12} md={6}>
               <Card variant="outlined" sx={{ height: '100%' }}>
                 <CardContent>
                   <Typography variant="h6" gutterBottom>
