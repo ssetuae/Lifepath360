@@ -411,7 +411,7 @@ const AdminReportView: React.FC = () => {
                       </TableRow>
                     </TableHead>
                     <TableBody>
-                      {Object.entries(results.learning_styles.scores).map(([key, value]) => (
+                      {Object.entries(results.learning_styles.scores as Record<string, number>).map(([key, value]) => (
                         <TableRow key={key}>
                           <TableCell>{key.charAt(0).toUpperCase() + key.slice(1)}</TableCell>
                           <TableCell>{value/10}</TableCell>
