@@ -426,8 +426,8 @@ const AdminUsers: React.FC = () => {
                   label="Status"
                   onChange={handleInputChange}
                 >
-                  <MenuItem value={true}>Active</MenuItem>
-                  <MenuItem value={false}>Inactive</MenuItem>
+                  <MenuItem value="true">Active</MenuItem>
+                  <MenuItem value="false">Inactive</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
@@ -441,8 +441,8 @@ const AdminUsers: React.FC = () => {
                   label="Admin Access"
                   onChange={handleInputChange}
                 >
-                  <MenuItem value={true}>Yes</MenuItem>
-                  <MenuItem value={false}>No</MenuItem>
+                  <MenuItem value="true">Yes</MenuItem>
+                  <MenuItem value="false">No</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
