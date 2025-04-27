@@ -1,7 +1,21 @@
+
 import React from 'react';
-import ListItemLink from './ListItemLink';
 import { Link as RouterLink, useNavigate, Outlet } from 'react-router-dom';
-import { AppBar, Toolbar, Typography, Button, Container, Box, IconButton, Menu, MenuItem, Drawer, List, ListItem, ListItemText, ListItemIcon, Divider } from '@mui/material';
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Button,
+  IconButton,
+  Drawer,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  Divider,
+  Box
+} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import AssessmentIcon from '@mui/icons-material/Assessment';
@@ -13,22 +27,15 @@ type LayoutProps = {
   isAdmin: boolean;
 };
 
+const drawerWidth = 240;
+
 const Layout: React.FC<LayoutProps> = ({ isAdmin }) => {
   const navigate = useNavigate();
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const isAuthenticated = Boolean(localStorage.getItem('token'));
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
-  };
-
-  const handleMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleMenuClose = () => {
-    setAnchorEl(null);
   };
 
   const handleLogout = () => {
@@ -38,7 +45,7 @@ const Layout: React.FC<LayoutProps> = ({ isAdmin }) => {
   };
 
   const drawer = (
-    <div>
+    <Box>
       <Box sx={{ p: 2 }}>
         <Typography variant="h6" component="div">
           Lifepath360
@@ -48,64 +55,127 @@ const Layout: React.FC<LayoutProps> = ({ isAdmin }) => {
       <List>
         {isAuthenticated && (
           <>
-            <ListItem button component={ListItemLink} to="/">
-              <ListItemIcon>
-                <DashboardIcon />
-              </ListItemIcon>
-              <ListItemText primary="Dashboard" />
-            </ListItem>
-            <ListItem button component={ListItemLink} to="/assessment">
-              <ListItemIcon>
-                <AssessmentIcon />
-              </ListItemIcon>
-              <ListItemText primary="Take Assessment" />
-            </ListItem>
-            {isAdmin && (
-              <ListItem button component={ListItemLink} to="/admin">
+            <ListItem disablePadding>
+              <ListItemButton component={RouterLink} to="/">
                 <ListItemIcon>
-                  <AdminPanelSettingsIcon />
+                  <DashboardIcon />
                 </ListItemIcon>
-                <ListItemText primary="Admin Panel" />
+                <ListItemText primary="Dashboard" />
+              </ListItemButton>
+            </ListItem>
+
+            <ListItem disablePadding>
+              <ListItemButton component={RouterLink} to="/assessment">
+                <ListItemIcon>
+                  <AssessmentIcon />
+                </ListItemIcon>
+                <ListItemText primary="Take Assessment" />
+              </ListItemButton>
+            </ListItem>
+
+            {isAdmin && (
+              <ListItem disablePadding>
+                <ListItemButton component={RouterLink} to="/admin">
+                  <ListItemIcon>
+                    <AdminPanelSettingsIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Admin" />
+                </ListItemButton>
               </ListItem>
             )}
+
+            <ListItem disablePadding>
+              <ListItemButton onClick={handleLogout}>
+                <ListItemIcon>
+                  <ExitToAppIcon />
+                </ListItemIcon>
+                <ListItemText primary="Logout" />
+              </ListItemButton>
+            </ListItem>
+          </>
+        )}
+
+        {!isAuthenticated && (
+          <>
+            <ListItem disablePadding>
+              <ListItemButton component={RouterLink} to="/login">
+                <ListItemIcon>
+                  <PersonIcon />
+                </ListItemIcon>
+                <ListItemText primary="Login" />
+              </ListItemButton>
+            </ListItem>
+
+            <ListItem disablePadding>
+              <ListItemButton component={RouterLink} to="/register">
+                <ListItemIcon>
+                  <PersonIcon />
+                </ListItemIcon>
+                <ListItemText primary="Register" />
+              </ListItemButton>
+            </ListItem>
           </>
         )}
       </List>
-    </div>
+    </Box>
   );
 
   return (
     <Box sx={{ display: 'flex' }}>
       <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
         <Toolbar>
-          <IconButton color="inherit" aria-label="open drawer" edge="start" onClick={handleDrawerToggle} sx={{ mr: 2 }}>
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            edge="start"
+            onClick={handleDrawerToggle}
+            sx={{ mr: 2, display: { sm: 'none' } }}
+          >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
-            <RouterLink to="/" style={{ color: 'white', textDecoration: 'none' }}>
-              Lifepath360
-            </RouterLink>
+          <Typography
+            variant="h6"
+            noWrap
+            component={RouterLink}
+            to="/"
+            sx={{ color: 'inherit', textDecoration: 'none', flexGrow: 1 }}
+          >
+            Lifepath360
           </Typography>
-          {isAuthenticated ? (
-            <>
-              <Button color="inherit" onClick={handleMenuOpen}>
-                Account
-              </Button>
-              <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose}>
-                <MenuItem component={RouterLink} to="/profile">Profile</MenuItem>
-                <MenuItem onClick={handleLogout}>Logout</MenuItem>
-              </Menu>
-            </>
-          ) : (
-            <Button color="inherit" component={RouterLink} to="/login">
-              Login
+          {isAuthenticated && (
+            <Button color="inherit" onClick={handleLogout}>
+              Logout
             </Button>
           )}
         </Toolbar>
       </AppBar>
-      <Drawer variant="permanent" sx={{ width: 240, flexShrink: 0, [`& .MuiDrawer-paper`]: { width: 240, boxSizing: 'border-box' } }}>
+
+      {/* Mobile drawer */}
+      <Drawer
+        variant="temporary"
+        open={mobileOpen}
+        onClose={handleDrawerToggle}
+        ModalProps={{ keepMounted: true }}
+        sx={{
+          display: { xs: 'block', sm: 'none' },
+          '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth }
+        }}
+      >
         {drawer}
       </Drawer>
+
+      {/* Desktop drawer */}
+      <Drawer
+        variant="permanent"
+        sx={{
+          display: { xs: 'none', sm: 'block' },
+          '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth }
+        }}
+        open
+      >
+        {drawer}
+      </Drawer>
+
       <Box component="main" sx={{ flexGrow: 1, p: 3, mt: 8 }}>
         <Outlet />
       </Box>
