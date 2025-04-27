@@ -115,9 +115,9 @@ const AdminUsers: React.FC = () => {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement> | SelectChangeEvent<string>) => {
     const { name, value } = e.target;
     if (name) {
-          setFormData({
+      setFormData({
       ...formData,
-      [name]: name === 'is_active' || name === 'is_admin' ? value === 'true' : value
+      [name]: (name === 'is_active' || name === 'is_admin') ? value === 'true' : value,
     });
     }
   };
