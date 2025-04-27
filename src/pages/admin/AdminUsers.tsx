@@ -367,7 +367,7 @@ const AdminUsers: React.FC = () => {
         
         <DialogContent>
           <Grid container spacing={2} sx={{ mt: 1 }}>
-            <Grid item xs={12} sm={6}>
+            <Grid  xs={12} sm={6}>
               <TextField
                 name="first_name"
                 label="First Name"
@@ -378,7 +378,7 @@ const AdminUsers: React.FC = () => {
               />
             </Grid>
             
-            <Grid item xs={12} sm={6}>
+            <Grid  xs={12} sm={6}>
               <TextField
                 name="last_name"
                 label="Last Name"
@@ -389,7 +389,7 @@ const AdminUsers: React.FC = () => {
               />
             </Grid>
             
-            <Grid item xs={12}>
+            <Grid  xs={12}>
               <TextField
                 name="email"
                 label="Email"
@@ -400,7 +400,7 @@ const AdminUsers: React.FC = () => {
               />
             </Grid>
             
-            <Grid item xs={12} sm={6}>
+            <Grid  xs={12} sm={6}>
               <FormControl fullWidth required>
                 <InputLabel>User Type</InputLabel>
                 <Select
@@ -417,7 +417,7 @@ const AdminUsers: React.FC = () => {
             </Grid>
             
             {formData.user_type === 'student' && (
-              <Grid item xs={12} sm={6}>
+              <Grid  xs={12} sm={6}>
                 <FormControl fullWidth required>
                   <InputLabel>Grade</InputLabel>
                   <Select
@@ -444,7 +444,7 @@ const AdminUsers: React.FC = () => {
               </Grid>
             )}
             
-            <Grid item xs={12} sm={6}>
+            <Grid  xs={12} sm={6}>
               <FormControl fullWidth>
                 <InputLabel>Status</InputLabel>
                 <Select
@@ -459,7 +459,7 @@ const AdminUsers: React.FC = () => {
               </FormControl>
             </Grid>
             
-            <Grid item xs={12} sm={6}>
+            <Grid  xs={12} sm={6}>
               <FormControl fullWidth>
                 <InputLabel>Admin Access</InputLabel>
                 <Select

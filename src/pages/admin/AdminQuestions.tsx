@@ -419,7 +419,7 @@ const AdminQuestions: React.FC = () => {
         
         <DialogContent>
           <Grid container spacing={2} sx={{ mt: 1 }}>
-            <Grid item xs={12}>
+            <Grid  xs={12}>
               <TextField
                 name="text"
                 label="Question Text"
@@ -430,7 +430,7 @@ const AdminQuestions: React.FC = () => {
               />
             </Grid>
             
-            <Grid item xs={12} sm={6}>
+            <Grid  xs={12} sm={6}>
               <FormControl fullWidth required>
                 <InputLabel>Category</InputLabel>
                 <Select
@@ -449,7 +449,7 @@ const AdminQuestions: React.FC = () => {
               </FormControl>
             </Grid>
             
-            <Grid item xs={12} sm={6}>
+            <Grid  xs={12} sm={6}>
               <FormControl fullWidth required>
                 <InputLabel>Question Type</InputLabel>
                 <Select
@@ -464,7 +464,7 @@ const AdminQuestions: React.FC = () => {
               </FormControl>
             </Grid>
             
-            <Grid item xs={12} sm={6}>
+            <Grid  xs={12} sm={6}>
               <FormControl fullWidth required>
                 <InputLabel>Grade</InputLabel>
                 <Select
@@ -491,7 +491,7 @@ const AdminQuestions: React.FC = () => {
             </Grid>
             
             {formData.question_type === 'MULTIPLE_CHOICE' && (
-              <Grid item xs={12}>
+              <Grid  xs={12}>
                 <Typography variant="subtitle1" gutterBottom>
                   Options
                 </Typography>

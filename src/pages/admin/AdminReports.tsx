@@ -348,7 +348,7 @@ const AdminReportView: React.FC = () => {
         )}
         
         <Grid container spacing={3}>
-          <Grid item xs={12} md={6}>
+          <Grid  xs={12} md={6}>
             <Card variant="outlined">
               <CardContent>
                 <Typography variant="h6" gutterBottom>
@@ -373,7 +373,7 @@ const AdminReportView: React.FC = () => {
             </Card>
           </Grid>
           
-          <Grid item xs={12} md={6}>
+          <Grid  xs={12} md={6}>
             <Card variant="outlined">
               <CardContent>
                 <Typography variant="h6" gutterBottom>
@@ -395,7 +395,7 @@ const AdminReportView: React.FC = () => {
             </Card>
           </Grid>
           
-          <Grid item xs={12}>
+          <Grid  xs={12}>
             <Card variant="outlined">
               <CardContent>
                 <Typography variant="h6" gutterBottom>
@@ -424,7 +424,7 @@ const AdminReportView: React.FC = () => {
             </Card>
           </Grid>
           
-          <Grid item xs={12}>
+          <Grid  xs={12}>
             <Card variant="outlined">
               <CardContent>
                 <Typography variant="h6" gutterBottom>
@@ -453,7 +453,7 @@ const AdminReportView: React.FC = () => {
             </Card>
           </Grid>
           
-          <Grid item xs={12}>
+          <Grid  xs={12}>
             <Card variant="outlined">
               <CardContent>
                 <Typography variant="h6" gutterBottom>
@@ -461,7 +461,7 @@ const AdminReportView: React.FC = () => {
                 </Typography>
                 
                 <Grid container spacing={2} sx={{ mt: 1 }}>
-                  <Grid item xs={12} sm={6}>
+                  <Grid  xs={12} sm={6}>
                     <Typography variant="subtitle1" gutterBottom>
                       Structure:
                     </Typography>
@@ -470,7 +470,7 @@ const AdminReportView: React.FC = () => {
                     </Typography>
                   </Grid>
                   
-                  <Grid item xs={12} sm={6}>
+                  <Grid  xs={12} sm={6}>
                     <Typography variant="subtitle1" gutterBottom>
                       Social Setting:
                     </Typography>
@@ -479,7 +479,7 @@ const AdminReportView: React.FC = () => {
                     </Typography>
                   </Grid>
                   
-                  <Grid item xs={12} sm={6}>
+                  <Grid  xs={12} sm={6}>
                     <Typography variant="subtitle1" gutterBottom>
                       Pace:
                     </Typography>
@@ -488,7 +488,7 @@ const AdminReportView: React.FC = () => {
                     </Typography>
                   </Grid>
                   
-                  <Grid item xs={12} sm={6}>
+                  <Grid  xs={12} sm={6}>
                     <Typography variant="subtitle1" gutterBottom>
                       Feedback:
                     </Typography>
@@ -501,7 +501,7 @@ const AdminReportView: React.FC = () => {
             </Card>
           </Grid>
           
-          <Grid item xs={12}>
+          <Grid  xs={12}>
             <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 2 }}>
               <Button 
                 variant="contained" 
