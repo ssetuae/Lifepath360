@@ -440,7 +440,7 @@ const AdminReportView: React.FC = () => {
                       </TableRow>
                     </TableHead>
                     <TableBody>
-                      {Object.entries(results.cognitive_strengths.scores).map(([key, value]) => (
+                      {Object.entries(results.cognitive_strengths.scores as Record<string, number>).map(([key, value]) => (
                         <TableRow key={key}>
                           <TableCell>{key.charAt(0).toUpperCase() + key.slice(1)}</TableCell>
                           <TableCell>{value/10}</TableCell>
