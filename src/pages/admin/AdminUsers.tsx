@@ -117,7 +117,7 @@ const AdminUsers: React.FC = () => {
     if (name) {
       setFormData({
         ...formData,
-        [name]: name === 'is_active' ? value === 'true' : value
+        [name]: name === 'is_active' || name === 'is_admin' ? value === 'true' : value
       });
     }
   };
@@ -437,7 +437,7 @@ const AdminUsers: React.FC = () => {
                 <InputLabel>Admin Access</InputLabel>
                 <Select
                   name="is_admin"
-                  value={formData.is_admin}
+                  value={String(formData.is_admin)}
                   label="Admin Access"
                   onChange={handleInputChange}
                 >
