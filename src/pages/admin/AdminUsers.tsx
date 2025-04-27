@@ -115,14 +115,14 @@ const AdminUsers: React.FC = () => {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement> | SelectChangeEvent<string>) => {
     const { name, value } = e.target;
     if (name) {
-      setFormData({
-        ...formData,
-        [name]: (name === 'is_active' || name === 'is_admin') ? value === 'true' : value
-      });
+          setFormData({
+      ...formData,
+      [name]: name === 'is_active' || name === 'is_admin' ? value === 'true' : value
+    });
     }
   };
 
-  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement> | SelectChangeEvent<string>) => {
     const { name, checked } = e.target;
     setFormData({
       ...formData,
