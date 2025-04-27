@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { SelectChangeEvent } from '@mui/material/Select';
 import { 
   Container, 
   Box, 
@@ -139,7 +140,7 @@ const Register: React.FC = () => {
                   id="firstName"
                   label="First Name"
                   autoFocus
-                  value={formData.firstName}
+                  value={String(formData.firstName)}
                   onChange={handleChange}
                 />
               </Grid>
@@ -150,7 +151,7 @@ const Register: React.FC = () => {
                   id="lastName"
                   label="Last Name"
                   name="lastName"
-                  value={formData.lastName}
+                  value={String(formData.lastName)}
                   onChange={handleChange}
                 />
               </Grid>
@@ -162,7 +163,7 @@ const Register: React.FC = () => {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
-                  value={formData.email}
+                  value={String(formData.email)}
                   onChange={handleChange}
                 />
               </Grid>
@@ -175,7 +176,7 @@ const Register: React.FC = () => {
                   type="password"
                   id="password"
                   autoComplete="new-password"
-                  value={formData.password}
+                  value={String(formData.password)}
                   onChange={handleChange}
                 />
               </Grid>
@@ -187,7 +188,7 @@ const Register: React.FC = () => {
                   label="Confirm Password"
                   type="password"
                   id="confirmPassword"
-                  value={formData.confirmPassword}
+                  value={String(formData.confirmPassword)}
                   onChange={handleChange}
                 />
               </Grid>
@@ -198,7 +199,7 @@ const Register: React.FC = () => {
                     labelId="user-type-label"
                     id="userType"
                     name="userType"
-                    value={formData.userType}
+                    value={String(formData.userType)}
                     label="I am a"
                     onChange={handleSelectChange}
                   >
@@ -217,7 +218,7 @@ const Register: React.FC = () => {
                       labelId="grade-label"
                       id="grade"
                       name="grade"
-                      value={formData.grade}
+                      value={String(formData.grade)}
                       label="Grade"
                       onChange={handleSelectChange}
                     >
