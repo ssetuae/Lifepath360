@@ -114,7 +114,7 @@ const AdminCourses: React.FC = () => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: value
+      [name]: (name === 'is_active' || name === 'is_admin') ? value === 'true' : value
     });
   };
 
@@ -270,7 +270,7 @@ const AdminCourses: React.FC = () => {
                 label="Course Title"
                 fullWidth
                 required
-                value={formData.title}
+                value={String(formData.title)}
                 onChange={handleInputChange}
               />
             </Grid>
@@ -283,7 +283,7 @@ const AdminCourses: React.FC = () => {
                 required
                 multiline
                 rows={4}
-                value={formData.description}
+                value={String(formData.description)}
                 onChange={handleInputChange}
               />
             </Grid>
@@ -294,7 +294,7 @@ const AdminCourses: React.FC = () => {
                 label="Category"
                 fullWidth
                 required
-                value={formData.category}
+                value={String(formData.category)}
                 onChange={handleInputChange}
               />
             </Grid>
@@ -305,7 +305,7 @@ const AdminCourses: React.FC = () => {
                 label="Grade Level"
                 fullWidth
                 required
-                value={formData.grade_level}
+                value={String(formData.grade_level)}
                 onChange={handleInputChange}
               />
             </Grid>
@@ -316,7 +316,7 @@ const AdminCourses: React.FC = () => {
                 label="Learning Style"
                 fullWidth
                 required
-                value={formData.learning_style}
+                value={String(formData.learning_style)}
                 onChange={handleInputChange}
               />
             </Grid>
@@ -327,7 +327,7 @@ const AdminCourses: React.FC = () => {
                 label="Duration"
                 fullWidth
                 required
-                value={formData.duration}
+                value={String(formData.duration)}
                 onChange={handleInputChange}
               />
             </Grid>
@@ -339,7 +339,7 @@ const AdminCourses: React.FC = () => {
                 fullWidth
                 required
                 type="number"
-                value={formData.price}
+                value={String(formData.price)}
                 onChange={handleInputChange}
               />
             </Grid>
@@ -429,7 +429,7 @@ const AdminRecommendations: React.FC = () => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: value
+      [name]: (name === 'is_active' || name === 'is_admin') ? value === 'true' : value
     });
   };
 
@@ -589,7 +589,7 @@ const AdminRecommendations: React.FC = () => {
                     fullWidth
                     multiline
                     rows={6}
-                    value={formData.learning_path}
+                    value={String(formData.learning_path)}
                     onChange={handleInputChange}
                     sx={{ mt: 2 }}
                   />
@@ -615,7 +615,7 @@ const AdminRecommendations: React.FC = () => {
                     fullWidth
                     multiline
                     rows={4}
-                    value={formData.career_affinities}
+                    value={String(formData.career_affinities)}
                     onChange={handleInputChange}
                     sx={{ mt: 2 }}
                   />
@@ -641,7 +641,7 @@ const AdminRecommendations: React.FC = () => {
                     fullWidth
                     multiline
                     rows={4}
-                    value={formData.college_recommendations}
+                    value={String(formData.college_recommendations)}
                     onChange={handleInputChange}
                     sx={{ mt: 2 }}
                   />
@@ -667,7 +667,7 @@ const AdminRecommendations: React.FC = () => {
                     fullWidth
                     multiline
                     rows={4}
-                    value={formData.global_exams}
+                    value={String(formData.global_exams)}
                     onChange={handleInputChange}
                     sx={{ mt: 2 }}
                   />

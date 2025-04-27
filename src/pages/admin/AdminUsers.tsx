@@ -346,7 +346,7 @@ const AdminUsers: React.FC = () => {
                 label="First Name"
                 fullWidth
                 required
-                value={formData.first_name}
+                value={String(formData.first_name)}
                 onChange={handleInputChange}
               />
             </Grid>
@@ -357,7 +357,7 @@ const AdminUsers: React.FC = () => {
                 label="Last Name"
                 fullWidth
                 required
-                value={formData.last_name}
+                value={String(formData.last_name)}
                 onChange={handleInputChange}
               />
             </Grid>
@@ -368,7 +368,7 @@ const AdminUsers: React.FC = () => {
                 label="Email"
                 fullWidth
                 required
-                value={formData.email}
+                value={String(formData.email)}
                 onChange={handleInputChange}
               />
             </Grid>
@@ -378,7 +378,7 @@ const AdminUsers: React.FC = () => {
                 <InputLabel>User Type</InputLabel>
                 <Select
                   name="user_type"
-                  value={formData.user_type}
+                  value={String(formData.user_type)}
                   label="User Type"
                   onChange={handleInputChange}
                 >
@@ -395,7 +395,7 @@ const AdminUsers: React.FC = () => {
                   <InputLabel>Grade</InputLabel>
                   <Select
                     name="grade"
-                    value={formData.grade}
+                    value={String(formData.grade)}
                     label="Grade"
                     onChange={handleInputChange}
                   >

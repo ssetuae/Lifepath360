@@ -134,7 +134,7 @@ const AdminQuestions: React.FC = () => {
     if (name) {
       setFormData({
         ...formData,
-        [name]: value
+        [name]: (name === 'is_active' || name === 'is_admin') ? value === 'true' : value
       });
     }
   };
@@ -399,7 +399,7 @@ const AdminQuestions: React.FC = () => {
                 label="Question Text"
                 fullWidth
                 required
-                value={formData.text}
+                value={String(formData.text)}
                 onChange={handleInputChange}
               />
             </Grid>
@@ -409,7 +409,7 @@ const AdminQuestions: React.FC = () => {
                 <InputLabel>Category</InputLabel>
                 <Select
                   name="category"
-                  value={formData.category}
+                  value={String(formData.category)}
                   label="Category"
                   onChange={handleInputChange}
                 >
@@ -428,7 +428,7 @@ const AdminQuestions: React.FC = () => {
                 <InputLabel>Question Type</InputLabel>
                 <Select
                   name="question_type"
-                  value={formData.question_type}
+                  value={String(formData.question_type)}
                   label="Question Type"
                   onChange={handleInputChange}
                 >
@@ -443,7 +443,7 @@ const AdminQuestions: React.FC = () => {
                 <InputLabel>Grade</InputLabel>
                 <Select
                   name="grade"
-                  value={formData.grade}
+                  value={String(formData.grade)}
                   label="Grade"
                   onChange={handleInputChange}
                 >
