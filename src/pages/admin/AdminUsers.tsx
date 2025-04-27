@@ -117,7 +117,7 @@ const AdminUsers: React.FC = () => {
     if (name) {
       setFormData({
         ...formData,
-        [name]: name === 'is_active' || name === 'is_admin' ? value === 'true' : value
+        [name]: (name === 'is_active' || name === 'is_admin') ? value === 'true' : value
       });
     }
   };
