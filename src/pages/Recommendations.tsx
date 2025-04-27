@@ -189,7 +189,7 @@ const Recommendations = () => {
         
         <Grid container spacing={2} sx={{ mb: 3 }}>
           {Object.entries(recommendations.learning_style).map(([style, score]) => (
-            <Grid  xs={6} sm={4} md={2} key={style}>
+            <Grid key={style} size={{ xs: 6, sm: 4, md: 2 }}>
               <Paper 
                 elevation={3} 
                 sx={{ 
@@ -243,7 +243,7 @@ const Recommendations = () => {
         {activeTab === 'courses' && (
           <Grid container spacing={3}>
             {recommendations.courses.map((course) => (
-              <Grid  xs={12} sm={6} md={4} key={course.id}>
+              <Grid key={course.id} size={{ xs: 12, sm: 6, md: 4 }}>
                 <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
                   <CardActionArea>
                     <CardMedia
@@ -290,7 +290,7 @@ const Recommendations = () => {
         {activeTab === 'careers' && (
           <Grid container spacing={3}>
             {recommendations.career_paths.map((career) => (
-              <Grid  xs={12} sm={6} md={4} key={career.id}>
+              <Grid key={career.id} size={{ xs: 12, sm: 6, md: 4 }}>
                 <Card sx={{ height: '100%' }}>
                   <CardContent>
                     <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1 }}>
@@ -326,7 +326,7 @@ const Recommendations = () => {
         {activeTab === 'exams' && (
           <Grid container spacing={3}>
             {recommendations.global_exams.map((exam) => (
-              <Grid  xs={12} sm={6} md={4} key={exam.id}>
+              <Grid key={exam.id} size={{ xs: 12, sm: 6, md: 4 }}>
                 <Card sx={{ height: '100%' }}>
                   <CardContent>
                     <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1 }}>

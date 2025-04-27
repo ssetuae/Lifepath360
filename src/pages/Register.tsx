@@ -131,7 +131,7 @@ const Register: React.FC = () => {
           
           <Box component="form" onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
-              <Grid  xs={12} sm={6}>
+              <Grid size={{ xs: 12, sm: 6 }}>
                 <TextField
                   name="firstName"
                   required
@@ -143,7 +143,7 @@ const Register: React.FC = () => {
                   onChange={handleChange}
                 />
               </Grid>
-              <Grid  xs={12} sm={6}>
+              <Grid size={{ xs: 12, sm: 6 }}>
                 <TextField
                   required
                   fullWidth
@@ -154,7 +154,7 @@ const Register: React.FC = () => {
                   onChange={handleChange}
                 />
               </Grid>
-              <Grid  xs={12}>
+              <Grid size={12}>
                 <TextField
                   required
                   fullWidth
@@ -166,7 +166,7 @@ const Register: React.FC = () => {
                   onChange={handleChange}
                 />
               </Grid>
-              <Grid  xs={12}>
+              <Grid size={12}>
                 <TextField
                   required
                   fullWidth
@@ -179,7 +179,7 @@ const Register: React.FC = () => {
                   onChange={handleChange}
                 />
               </Grid>
-              <Grid  xs={12}>
+              <Grid size={12}>
                 <TextField
                   required
                   fullWidth
@@ -191,7 +191,7 @@ const Register: React.FC = () => {
                   onChange={handleChange}
                 />
               </Grid>
-              <Grid  xs={12}>
+              <Grid size={12}>
                 <FormControl fullWidth required>
                   <InputLabel id="user-type-label">I am a</InputLabel>
                   <Select
@@ -210,7 +210,7 @@ const Register: React.FC = () => {
               </Grid>
               
               {formData.userType === 'student' && (
-                <Grid  xs={12}>
+                <Grid size={12}>
                   <FormControl fullWidth required>
                     <InputLabel id="grade-label">Grade</InputLabel>
                     <Select

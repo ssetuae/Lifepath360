@@ -141,7 +141,7 @@ const Dashboard: React.FC = () => {
     <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
       <Grid container spacing={3}>
         {/* Welcome Card */}
-        <Grid  xs={12}>
+        <Grid size={12}>
           <Paper sx={{ p: 3, display: 'flex', flexDirection: 'column' }}>
             <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
               <PersonIcon sx={{ fontSize: 40, color: 'primary.main', mr: 2 }} />
@@ -166,7 +166,7 @@ const Dashboard: React.FC = () => {
         </Grid>
 
         {/* Recent Assessments */}
-        <Grid  xs={12}>
+        <Grid size={12}>
           <Paper sx={{ p: 3, display: 'flex', flexDirection: 'column' }}>
             <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
               <HistoryIcon sx={{ fontSize: 30, color: 'primary.main', mr: 2 }} />
@@ -188,7 +188,7 @@ const Dashboard: React.FC = () => {
             ) : (
               <Grid container spacing={2}>
                 {assessments.map((assessment) => (
-                  <Grid  xs={12} md={6} lg={4} key={assessment.id}>
+                  <Grid key={assessment.id} size={{ xs: 12, md: 6, lg: 4 }}>
                     <Card variant="outlined">
                       <CardContent>
                         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1 }}>
@@ -278,7 +278,7 @@ const Dashboard: React.FC = () => {
         </Grid>
 
         {/* Learning Resources */}
-        <Grid  xs={12}>
+        <Grid size={12}>
           <Paper sx={{ p: 3, display: 'flex', flexDirection: 'column' }}>
             <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
               <SchoolIcon sx={{ fontSize: 30, color: 'primary.main', mr: 2 }} />
@@ -292,7 +292,7 @@ const Dashboard: React.FC = () => {
             </Typography>
             
             <Grid container spacing={2}>
-              <Grid  xs={12} md={4}>
+              <Grid size={{ xs: 12, md: 4 }}>
                 <Card variant="outlined" sx={{ height: '100%' }}>
                   <CardContent>
                     <Typography variant="h6" component="div" gutterBottom>
@@ -308,7 +308,7 @@ const Dashboard: React.FC = () => {
                 </Card>
               </Grid>
               
-              <Grid  xs={12} md={4}>
+              <Grid size={{ xs: 12, md: 4 }}>
                 <Card variant="outlined" sx={{ height: '100%' }}>
                   <CardContent>
                     <Typography variant="h6" component="div" gutterBottom>
@@ -324,7 +324,7 @@ const Dashboard: React.FC = () => {
                 </Card>
               </Grid>
               
-              <Grid  xs={12} md={4}>
+              <Grid size={{ xs: 12, md: 4 }}>
                 <Card variant="outlined" sx={{ height: '100%' }}>
                   <CardContent>
                     <Typography variant="h6" component="div" gutterBottom>
