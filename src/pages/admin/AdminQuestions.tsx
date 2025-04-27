@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { 
+import { SelectChangeEvent } from '@mui/material/Select';
   Container, 
   Box, 
   Typography, 
@@ -113,7 +114,7 @@ const AdminQuestions: React.FC = () => {
     setPage(newPage);
   };
 
-  const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement> | SelectChangeEvent<string>) => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
@@ -155,7 +156,7 @@ const AdminQuestions: React.FC = () => {
     setCurrentQuestion(null);
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | { name?: string; value: unknown }>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement> | SelectChangeEvent<string>) => {
     const { name, value } = e.target;
     if (name) {
       setFormData({
