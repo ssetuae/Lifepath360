@@ -140,7 +140,7 @@ const AdminDashboard: React.FC = () => {
       
       {/* Stats Cards */}
       <Grid container spacing={3} sx={{ mb: 4 }}>
-        <Grid  xs={12} sm={6} md={3}>
+        <Grid size={{ xs: 12, sm: 6, md: 3 }}>
           <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
             <CardContent sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
               <PeopleIcon sx={{ fontSize: 48, color: 'primary.main', mb: 1 }} />
@@ -154,7 +154,7 @@ const AdminDashboard: React.FC = () => {
           </Card>
         </Grid>
         
-        <Grid  xs={12} sm={6} md={3}>
+        <Grid size={{ xs: 12, sm: 6, md: 3 }}>
           <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
             <CardContent sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
               <AssessmentIcon sx={{ fontSize: 48, color: 'primary.main', mb: 1 }} />
@@ -168,7 +168,7 @@ const AdminDashboard: React.FC = () => {
           </Card>
         </Grid>
         
-        <Grid  xs={12} sm={6} md={3}>
+        <Grid size={{ xs: 12, sm: 6, md: 3 }}>
           <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
             <CardContent sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
               <QuizIcon sx={{ fontSize: 48, color: 'primary.main', mb: 1 }} />
@@ -182,7 +182,7 @@ const AdminDashboard: React.FC = () => {
           </Card>
         </Grid>
         
-        <Grid  xs={12} sm={6} md={3}>
+        <Grid size={{ xs: 12, sm: 6, md: 3 }}>
           <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
             <CardContent sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
               <SchoolIcon sx={{ fontSize: 48, color: 'primary.main', mb: 1 }} />

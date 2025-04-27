@@ -289,7 +289,7 @@ const AdminCourses: React.FC = () => {
         
         <DialogContent>
           <Grid container spacing={2} sx={{ mt: 1 }}>
-            <Grid  xs={12}>
+            <Grid size={12}>
               <TextField
                 name="title"
                 label="Course Title"
@@ -300,7 +300,7 @@ const AdminCourses: React.FC = () => {
               />
             </Grid>
             
-            <Grid  xs={12}>
+            <Grid size={12}>
               <TextField
                 name="description"
                 label="Description"
@@ -313,7 +313,7 @@ const AdminCourses: React.FC = () => {
               />
             </Grid>
             
-            <Grid  xs={12} sm={6}>
+            <Grid size={{ xs: 12, sm: 6 }}>
               <TextField
                 name="category"
                 label="Category"
@@ -324,7 +324,7 @@ const AdminCourses: React.FC = () => {
               />
             </Grid>
             
-            <Grid  xs={12} sm={6}>
+            <Grid size={{ xs: 12, sm: 6 }}>
               <TextField
                 name="grade_level"
                 label="Grade Level"
@@ -335,7 +335,7 @@ const AdminCourses: React.FC = () => {
               />
             </Grid>
             
-            <Grid  xs={12} sm={6}>
+            <Grid size={{ xs: 12, sm: 6 }}>
               <TextField
                 name="learning_style"
                 label="Learning Style"
@@ -346,7 +346,7 @@ const AdminCourses: React.FC = () => {
               />
             </Grid>
             
-            <Grid  xs={12} sm={6}>
+            <Grid size={{ xs: 12, sm: 6 }}>
               <TextField
                 name="duration"
                 label="Duration"
@@ -357,7 +357,7 @@ const AdminCourses: React.FC = () => {
               />
             </Grid>
             
-            <Grid  xs={12} sm={6}>
+            <Grid size={{ xs: 12, sm: 6 }}>
               <TextField
                 name="price"
                 label="Price (AED)"
@@ -561,7 +561,7 @@ const AdminRecommendations: React.FC = () => {
         )}
         
         <Grid container spacing={3}>
-          <Grid  xs={12} md={6}>
+          <Grid size={{ xs: 12, md: 6 }}>
             <Card variant="outlined">
               <CardContent>
                 <Typography variant="h6" gutterBottom>
@@ -583,7 +583,7 @@ const AdminRecommendations: React.FC = () => {
             </Card>
           </Grid>
           
-          <Grid  xs={12} md={6}>
+          <Grid size={{ xs: 12, md: 6 }}>
             <Card variant="outlined">
               <CardContent>
                 <Typography variant="h6" gutterBottom>
@@ -601,7 +601,7 @@ const AdminRecommendations: React.FC = () => {
             </Card>
           </Grid>
           
-          <Grid  xs={12}>
+          <Grid size={12}>
             <Card variant="outlined">
               <CardContent>
                 <Typography variant="h6" gutterBottom>
@@ -627,7 +627,7 @@ const AdminRecommendations: React.FC = () => {
             </Card>
           </Grid>
           
-          <Grid  xs={12} md={6}>
+          <Grid size={{ xs: 12, md: 6 }}>
             <Card variant="outlined">
               <CardContent>
                 <Typography variant="h6" gutterBottom>
@@ -653,7 +653,7 @@ const AdminRecommendations: React.FC = () => {
             </Card>
           </Grid>
           
-          <Grid  xs={12} md={6}>
+          <Grid size={{ xs: 12, md: 6 }}>
             <Card variant="outlined">
               <CardContent>
                 <Typography variant="h6" gutterBottom>
@@ -679,7 +679,7 @@ const AdminRecommendations: React.FC = () => {
             </Card>
           </Grid>
           
-          <Grid  xs={12}>
+          <Grid size={12}>
             <Card variant="outlined">
               <CardContent>
                 <Typography variant="h6" gutterBottom>
